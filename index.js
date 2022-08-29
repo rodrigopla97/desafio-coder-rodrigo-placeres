@@ -141,6 +141,7 @@ if (totalCompra != 0) {
         precioFinal
     );
   } else {
+    precioFinal = totalCompra;
     alert("El precio final de su carrito es de ARS$" + totalCompra);
   }
 
