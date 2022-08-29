@@ -134,10 +134,10 @@ let cuotas;
 
 if (totalCompra != 0) {
   alert("El total sin descuento de su de su carrito es de ARS$" + totalCompra);
-  if (totalCompra > 15000) {
+  if (totalCompra > 9000) {
     precioFinal = descuentoPrecio(totalCompra);
     alert(
-      "El precio por ser compra mayor a ARS$15000 de su carrito es de ARS$" +
+      "El precio por ser compra mayor a ARS$9000 de su carrito es de ARS$" +
         precioFinal
     );
   } else {
