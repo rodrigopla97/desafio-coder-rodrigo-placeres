@@ -1,12 +1,10 @@
-//se declararon las funciones de distinta manera para mostrar aplicación de varias
-
 let descuentoPrecio = (num) => {
   return num - 1000;
 };
 
 function recargoTarjeta(num, cant) {
   const mensajeError =
-    "#####. No ha ingresado una opción válida, vuelva a empezar ya que sa terminó su posibilidad de compra";
+    "######. No ha ingresado una opción válida, vuelva a empezar ya que sa terminó su posibilidad de compra";
   if (cant === 1) {
     return num;
   } else if (cant === 2) {
