@@ -3,8 +3,7 @@ let descuentoPrecio = (num) => {
 };
 
 function recargoTarjeta(num, cant) {
-  const mensajeError =
-    "######. No ha ingresado una opción válida, vuelva a empezar ya que sa terminó su posibilidad de compra";
+  const mensajeError = "######. No ha ingresado una opción válida, vuelva a empezar ya que sa terminó su posibilidad de compra";
   if (cant === 1) {
     return num;
   } else if (cant === 2) {
@@ -22,25 +21,28 @@ let totalCompra = 0;
 let tipoPantalon;
 let tipoRemera;
 let tipoCalzado;
-let carrito = []
+let carrito = [];
 
 let seguirComprando = true;
 let decision;
 
-class Producto{
-  constructor(nombre, tipo, precio){
-    this.nombre = nombre
-    this.tipo = tipo
-    this.precio = precio
+let tipoPago;
+let precioFinal = 0;
+let cuotas;
+class Producto {
+  constructor(nombre, tipo, precio) {
+    this.nombre = nombre;
+    this.tipo = tipo;
+    this.precio = precio;
   }
 }
 
-const pantalonUrban = new Producto("Pantalón","Urban",2500)
-const pantalonSport = new Producto("Pantalón","Sport",2000)
-const remeraUrban = new Producto("Remera","Urban",1200)
-const remeraSport = new Producto("Remera","Sport",1500)
-const calzadoUrban = new Producto("Calzado","Urban",6000)
-const calzadoSport = new Producto("Calzado","Sport",8000)
+const pantalonUrban = new Producto("Pantalón", "Urban", 2500);
+const pantalonSport = new Producto("Pantalón", "Sport", 2000);
+const remeraUrban = new Producto("Remera", "Urban", 1200);
+const remeraSport = new Producto("Remera", "Sport", 1500);
+const calzadoUrban = new Producto("Calzado", "Urban", 6000);
+const calzadoSport = new Producto("Calzado", "Sport", 8000);
 
 let nombreCliente = prompt("Ingrese su nombre: ").toUpperCase();
 alert(`Bienvenido ${nombreCliente}!, a continuacion podrás seleccionar que producto deseas cargar al carrito`);
@@ -48,16 +50,16 @@ alert(`Bienvenido ${nombreCliente}!, a continuacion podrás seleccionar que prod
 let productoSeleccionado = parseInt(prompt("1.Pantalones - 2.Remeras - 3.Calzado - 4.Cancelar compra"));
 
 while (seguirComprando === true) {
-
   if (productoSeleccionado === 1) {
-    tipoPantalon = parseInt(
-      prompt("Ingrese tipo de pantalón: 1.Urban - 2.Sport")
-    );
+    tipoPantalon = parseInt(prompt("Ingrese tipo de pantalón: 1.Urban - 2.Sport"));
+
     if (tipoPantalon === 1) {
-      carrito.push(pantalonUrban)
-    } else if (tipoPantalon === 2) {
-      carrito.push(pantalonSport)
-    } else {
+      carrito.push(pantalonUrban);
+    }
+    else if (tipoPantalon === 2) {
+      carrito.push(pantalonSport);
+    }
+    else {
       tipoPantalon = parseInt(
         prompt(
           "OPCIÓN INVÁLIDA: Ingrese tipo de pantalón válido: 1.Urban - 2.Sport"
@@ -65,19 +67,18 @@ while (seguirComprando === true) {
       );
       continue;
     }
-  } 
+  }
   else if (productoSeleccionado === 2) {
     tipoRemera = parseInt(prompt("Ingrese tipo de remera: 1.Urban - 2.Sport"));
-    
+
     if (tipoRemera === 1) {
-      carrito.push(remeraUrban)
-    } 
+      carrito.push(remeraUrban);
+    }
     else if (tipoRemera === 2) {
-      carrito.push(remeraSport)
+      carrito.push(remeraSport);
     }
     else {
-      tipoRemera = parseInt(
-        prompt("OPCIÓN INVÁLIDA: Ingrese tipo de remera válido: 1.Urban - 2.Sport"));
+      tipoRemera = parseInt(prompt("OPCIÓN INVÁLIDA: Ingrese tipo de remera válido: 1.Urban - 2.Sport"));
       continue;
     }
   }
@@ -85,10 +86,10 @@ while (seguirComprando === true) {
     tipoCalzado = parseInt(prompt("Ingrese tipo de calzado: 1.Urban - 2.Sport"));
 
     if (tipoCalzado === 1) {
-      carrito.push(calzadoUrban)
+      carrito.push(calzadoUrban);
     }
     else if (tipoCalzado === 2) {
-      carrito.push(calzadoSport)
+      carrito.push(calzadoSport);
     }
     else {
       tipoCalzado = parseInt(prompt("OPCIÓN INVÁLIDA: Ingrese tipo de calzado válido: 1.Urban - 2.Sport"));
@@ -125,17 +126,15 @@ while (seguirComprando === true) {
   }
 }
 
-let tipoPago;
-let precioFinal = 0;
-let cuotas;
-
-for(let i=0;i<carrito.length;i++){
-  totalCompra = totalCompra +carrito[i].precio
-}
 
 if (totalCompra != 0) {
+
+  for (let i = 0; i < carrito.length; i++) {
+    totalCompra = totalCompra + carrito[i].precio;
+  }
+
   alert("El total sin descuento de su de su carrito es de ARS$" + totalCompra);
-  
+
   if (totalCompra > 9000) {
     precioFinal = descuentoPrecio(totalCompra);
     alert("El precio por ser compra mayor a ARS$9000 de su carrito es de ARS$" + precioFinal);
@@ -146,7 +145,7 @@ if (totalCompra != 0) {
   }
 
   tipoPago = parseInt(prompt("Ingrese tipo de pago: 1.Efectivo - 2.Cuotas"));
-  
+
   if (tipoPago === 1) {
     alert("El precio final de su carrito es de ARS$" + descuentoEfectivo(precioFinal));
   }
