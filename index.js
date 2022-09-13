@@ -61,14 +61,14 @@ const remeraSport = new Producto("Remera", "Sport", 1500);
 const calzadoUrban = new Producto("Calzado", "Urban", 6000);
 const calzadoSport = new Producto("Calzado", "Sport", 8000);
 
-productos.push(pantalonUrban, pantalonSport, remeraUrban, remeraSport, calzadoUrban, calzadoSport)
+productos.push(pantalonUrban, pantalonSport, remeraUrban, remeraSport, calzadoUrban, calzadoSport);
 
-console.log(productos)
+console.log(productos);
 
 productos.forEach(producto => {
-  const option = document.createElement('option')
-  option.innerText = `${producto.nombre} ${producto.tipo}: $${producto.precio}`
-  selectTag1.append(option)
+  const option = document.createElement('option');
+  option.innerText = `${producto.nombre} ${producto.tipo}: $${producto.precio}`;
+  selectTag1.append(option);
 })
 
 let nombreCliente = prompt("Ingrese su nombre: ").toUpperCase();
@@ -189,9 +189,9 @@ if (compra.totalCompra != 0) {
   console.log(compra.filtroCarrito);
 
   compra.carrito.forEach(producto => {
-    const option = document.createElement('option')
-    option.innerText = `${producto.nombre} ${producto.tipo}`
-    selectTag.append(option)
+    const option = document.createElement('option');
+    option.innerText = `${producto.nombre} ${producto.tipo}`;
+    selectTag.append(option);
   })
 
 }
