@@ -193,5 +193,4 @@ if (compra.totalCompra != 0) {
     option.innerText = `${producto.nombre} ${producto.tipo}`;
     selectTag.append(option);
   })
-
 }
