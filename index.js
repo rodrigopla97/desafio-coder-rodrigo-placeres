@@ -40,20 +40,17 @@ const total = document.getElementById("total");
 const pTotal = document.createElement("p");
 const pSaludo = document.createElement("p");
 
+let productos = [];
+let totalCompra = 0;
+const date = new Date();
+const anio = date.getFullYear();
+let compra = new Compra();
+
 botones.append(btnAgregar);
 botones.append(btnFinalizar);
 botones.append(btnCancelar);
 botones.append(btnVaciar);
 footer.append(pFooter);
-
-let productos = [];
-let precioFinal = 0;
-let totalCompra = 0;
-
-const date = new Date();
-const anio = date.getFullYear();
-
-let compra = new Compra();
 
 const pantalonUrban = new Producto(1, "Pantalón", "Urban", 2500);
 const pantalonSport = new Producto(2, "Pantalón", "Sport", 2000);
