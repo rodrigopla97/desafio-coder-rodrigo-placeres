@@ -1,0 +1,57 @@
+:root {
+    --verde: #00FF01;
+}
+
+* {
+    background-color: black;
+    color: aliceblue;
+}
+
+
+#select-productos {
+    color: var(--verde);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-color: blue;
+    border-radius: 2rem;
+    width: 15rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: auto;
+    display: flex;
+    text-align: center;
+}
+
+button {
+    height: 2.5rem;
+    width: 10rem;
+    text-align: center;
+    padding: 10px;
+    color: var(--verde);
+    border-color: blue;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem;
+    text-align: center;
+}
+
+#select-productos:hover,
+button:hover {
+    background: blue;
+    color: var(--verde);
+}
+
+#botones {
+    text-align: center;
+}
+
+option {
+    align-items: center;
+    color: var(--verde);
+    background-color: black;
+    cursor: pointer;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}

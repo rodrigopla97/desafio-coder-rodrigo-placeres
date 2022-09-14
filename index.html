@@ -5,24 +5,47 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rodrigo Placeres - Coder</title>
+  <title>Desafío Coder Rodrigo Placeres</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
-<header>
-  <h1>Desafío Complementario 12/09 - Interactuar con HTML</h1>
-</header>
-
 <body>
-  <p>Productos en stock: </p>
-  <select name="select-productos1" id="select-productos1"></select>
 
-  <p>Estos son sus productos agregados al carrito: </p>
-  <select name="select-productos" id="select-productos"></select>
+  <header>
+    <h1>Desafio Rodrigo Placeres</h1>
+  </header>
 
-  <script src="index.js"></script>
+  <div id="stock" class="divProd">
+    <h3>Productos disponibles</h3>
+
+    <select name="select-productos" id="select-productos"></select>
+  </div>
+
+  <div id="botones"></div>
+
+  <div id="carrito-container">
+    <h3 class="titulo-carrito">Carrito</h3>
+    <p id="vacio">Carrito vacío :c</p>
+    <ul id="lista"></ul>
+  </div>
+
+  <div id="total">
+
+  </div>
+
+  <div id="saludo">
+
+  </div>
+
+  <button onclick="location.reload()">Refresh!</button>
+
+  <footer id="footer">
+
+  </footer>
+
+  <script src="ejemplo.js"></script>
 </body>
-<footer>
-  <p>Rodrigo Placeres</p>
-</footer>
 
 </html>
