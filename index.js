@@ -161,7 +161,6 @@ btnFinalizar.onclick = () => {
     total.append(pTotal);
     compra.carrito = [];
   }
-  console.log(filtroCarrito)
 };
 
 btnCancelar.onclick = () => {
