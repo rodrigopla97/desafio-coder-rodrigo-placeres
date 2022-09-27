@@ -2,10 +2,10 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desafío Coder Rodrigo Placeres</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrowShop</title>
 
   <link rel="stylesheet" href="css/styles.css">
 
@@ -14,8 +14,19 @@
 <body>
 
   <header>
-    <h1>Desafío Coder Rodrigo Placeres</h1>
+    <h1>CrowShop</h1>
   </header>
+
+  <div id="usuario">
+    <h3 id="tituloUsuario">Ingrese su nombre y correo electrónico para recibir nuestras newsletter!</h3>
+
+    <form id="formUsuario">
+      <input type="text" name="name" id="name" placeholder="Ingrese su nombre...">
+      <input type="text" name="lastname" id="lastname" placeholder="Ingrese su apellido...">
+      <input type="email" name="email" id="email" placeholder="Ingrese su correo...">
+      <input type="submit" id="submit" value="Enviar">
+    </form>
+  </div>
 
   <div id="stock" class="divProd">
     <h3>Productos disponibles</h3>
@@ -34,8 +45,6 @@
   <div id="total"></div>
 
   <div id="saludo"></div>
-
-  <button onclick="location.reload()">Refresh!</button>
 
   <footer id="footer"></footer>
 

@@ -8,7 +8,8 @@
 }
 
 
-#select-productos {
+#select-productos,
+form>input {
     color: var(--verde);
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-color: blue;
@@ -19,6 +20,12 @@
     margin: auto;
     display: flex;
     text-align: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+form>input:hover {
+    background: blue;
 }
 
 button {
@@ -40,7 +47,8 @@ button:hover {
     color: var(--verde);
 }
 
-#botones {
+#botones,
+#usuario {
     text-align: center;
 }
 
@@ -54,4 +62,9 @@ option {
 footer {
     position: absolute;
     bottom: 0;
+}
+
+input::-webkit-input-placeholder,
+input:active {
+    color: var(--verde);
 }

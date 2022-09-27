@@ -3,9 +3,18 @@ function innerVacio() {
   ulList.innerHTML = "";
   pTotal.innerText = "";
   pSaludo.innerText = "";
+  finalizado = true;
 }
-
-class Producto {
+function comprobarSiExisteEnCarrito(productoIngresado) {
+  for (const i in compra.carrito) {
+    if (compra.carrito[i].id == productoIngresado.id) {
+      compra.carrito[i].cantidad++;
+      return true
+    }
+  }
+  return false
+}
+class Usuario {
   constructor(id, nombre, tipo, precio) {
     this.id = id;
     this.nombre = nombre;
@@ -13,7 +22,15 @@ class Producto {
     this.precio = precio;
   }
 }
-
+class Producto {
+  constructor(id, nombre, tipo, precio) {
+    this.id = id;
+    this.nombre = nombre;
+    this.tipo = tipo;
+    this.precio = precio;
+    this.cantidad = 1
+  }
+}
 class Compra {
   constructor(cuotas) {
     this.totalCompra = 0;
@@ -28,6 +45,8 @@ const btnFinalizar = document.createElement("button");
 const btnCancelar = document.createElement("button");
 const btnVaciar = document.createElement("button");
 const pFooter = document.createElement("p");
+const tituloUsuario = document.getElementById("tituloUsuario");
+const formUsuario = document.getElementById("formUsuario");
 const selectTag = document.getElementById("select-productos");
 const carritoVacio = document.getElementById("vacio");
 const carritoContainer = document.getElementById("carrito-container");
@@ -42,9 +61,12 @@ const pSaludo = document.createElement("p");
 
 let productos = [];
 let totalCompra = 0;
-const date = new Date();
-const anio = date.getFullYear();
+const anio = new Date().getFullYear();
 let compra = new Compra();
+let nombreUsuario = "";
+let apellidoUsuario = "";
+let correo = "";
+let finalizado = false;
 
 botones.append(btnAgregar);
 botones.append(btnFinalizar);
@@ -76,22 +98,60 @@ btnVaciar.innerText = "Vaciar Carrito";
 carritoVacio.innerText = `Carrito vacío :c`;
 pFooter.innerText = `Rodrigo Placeres ${anio}`;
 
-btnAgregar.onclick = () => {
-  const productoIngresado = productos[selectTag.selectedIndex];
-  const li = document.createElement("li");
+formUsuario.onsubmit = (e) => {
+  e.preventDefault();
+  const infoUserArray = [];
+  for (const element of e.target.children) {
+    const usuarioObj = {};
+    usuarioObj["tipo"] = element.name;
+    usuarioObj["valor"] = element.value;
+    infoUserArray.push(usuarioObj);
+  }
+  localStorage.setItem("info", JSON.stringify(infoUserArray));
 
-  compra.carrito.push(productoIngresado);
-  compra.carrito.forEach((producto) => li.innerText = `${producto.nombre} ${producto.tipo}`);
-  ulList.append(li);
-  carritoContainer.append(ulList);
-  carritoVacio.innerHTML = "";
-  pTotal.innerText = "";
-  pSaludo.innerText = "";
+  window.location.reload();
+};
+
+if (localStorage.length > 0) {
+  const info = JSON.parse(localStorage.getItem("info"));
+
+  info.forEach((dato) => {
+    dato.tipo === "name" ? nombre = dato.valor : '';
+    dato.tipo === "lastname" ? apellido = dato.valor : '';
+    dato.tipo === "email" ? correo = dato.valor : '';
+  });
+
+  if (nombre !== "" && apellido !== "" && correo !== "") {
+    tituloUsuario.innerText = `Hola ${nombre} ${apellido}! Bienvenido a CrowShop`;
+    formUsuario.innerText = "";
+  } else {
+    tituloUsuario.innerText = `No ingresó todos los datos`;
+  }
+}
+
+btnAgregar.onclick = () => {
+  innerVacio();
+  finalizado ? totalCompra = 0 : '';
+
+  finalizado = false;
+
+  const productoIngresado = productos[selectTag.selectedIndex];
+
+  !comprobarSiExisteEnCarrito(productoIngresado) ? compra.carrito.push(productoIngresado) : '';
+
+  compra.carrito.forEach((producto => {
+    const li = document.createElement("li");
+    li.innerText = `${producto.nombre} ${producto.tipo} x${producto.cantidad}`
+    ulList.append(li)
+    carritoContainer.append(ulList);
+    filtroCarrito = [...compra.carrito]
+  }));
 };
 
 btnFinalizar.onclick = () => {
   totalCompra = 0;
-  compra.carrito.forEach((producto) => totalCompra = totalCompra + producto.precio);
+
+  filtroCarrito.forEach((producto) => (totalCompra += producto.precio * producto.cantidad, producto.cantidad = 1));
   innerVacio();
 
   if (totalCompra === 0) {
@@ -101,6 +161,7 @@ btnFinalizar.onclick = () => {
     total.append(pTotal);
     compra.carrito = [];
   }
+  console.log(filtroCarrito)
 };
 
 btnCancelar.onclick = () => {
