@@ -156,10 +156,22 @@ btnFinalizar.onclick = () => {
 
   if (totalCompra === 0) {
     carritoVacio.innerText = `Carrito vacío :c`;
+    Swal.fire({
+      title: "(┘ಠ_ಠ)┘",
+      text: "Carrito vacio :_",
+      buttonsStyling: false
+    });
   } else {
     pTotal.innerText = `El total de la compra es de $${totalCompra}`;
     total.append(pTotal);
     compra.carrito = [];
+    filtroCarrito = [];
+    Swal.fire({
+      title: "(⌐■_■)",
+      text: "Haz finalizado tu compra con éxito!",
+      icon: "success",
+      buttonsStyling: false
+    });
   }
 };
 
@@ -169,10 +181,20 @@ btnCancelar.onclick = () => {
   pSaludo.innerText = `Que lastima! Te esperamos la proxima!`;
   saludo.append(pSaludo);
   compra.carrito = [];
+  Swal.fire({
+    title: "(┬┬﹏┬┬)",
+    text: "Que lastima! Te esperamos la proxima!",
+    buttonsStyling: false
+  });
 };
 
 btnVaciar.onclick = () => {
   innerVacio();
   carritoVacio.innerText = `Carrito vacío :c`;
   compra.carrito = [];
+  Swal.fire({
+    title: "( ﾉ ﾟｰﾟ)ﾉ",
+    text: "Carrito vacio :_",
+    buttonsStyling: false
+  });
 };

@@ -68,3 +68,24 @@ input::-webkit-input-placeholder,
 input:active {
     color: var(--verde);
 }
+
+
+.swal2-container.swal2-center>.swal2-popup {
+    color: var(--verde);
+    background-color: black;
+    border: inset blue;
+    border-radius: 50px;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+    background-color: transparent;
+}
+
+.swal2-icon.swal2-error {
+    border-color: black;
+}
+
+.swal2-title {
+    max-width: 50%;
+    place-self: center;
+}
