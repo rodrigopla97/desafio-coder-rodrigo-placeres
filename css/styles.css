@@ -60,7 +60,7 @@ option {
 }
 
 footer {
-    position: absolute;
+    position: sticky;
     bottom: 0;
 }
 

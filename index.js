@@ -44,6 +44,7 @@ const btnAgregar = document.createElement("button");
 const btnFinalizar = document.createElement("button");
 const btnCancelar = document.createElement("button");
 const btnVaciar = document.createElement("button");
+const btnProximos = document.createElement("button");
 const pFooter = document.createElement("p");
 const tituloUsuario = document.getElementById("tituloUsuario");
 const formUsuario = document.getElementById("formUsuario");
@@ -72,6 +73,7 @@ botones.append(btnAgregar);
 botones.append(btnFinalizar);
 botones.append(btnCancelar);
 botones.append(btnVaciar);
+botones.append(btnProximos);
 footer.append(pFooter);
 
 const pantalonUrban = new Producto(1, "Pantalón", "Urban", 2500);
@@ -95,6 +97,7 @@ btnAgregar.innerText = "Agregar Producto";
 btnFinalizar.innerText = "Finalizar Compra";
 btnCancelar.innerText = "Cancelar Compra";
 btnVaciar.innerText = "Vaciar Carrito";
+btnProximos.innerText = "Próximamente";
 carritoVacio.innerText = `Carrito vacío :c`;
 pFooter.innerText = `Rodrigo Placeres ${anio}`;
 
@@ -197,4 +200,23 @@ btnVaciar.onclick = () => {
     text: "Carrito vacio :_",
     buttonsStyling: false
   });
+};
+
+btnProximos.onclick = () => {
+  innerVacio();
+  compra.carrito = [];
+  carritoVacio.innerText = `Proximos ingresos`;
+  fetch('https://api.escuelajs.co/api/v1/categories/4/products')
+    .then(res => res.json())
+    .then(json => {
+      const proximos = json
+      // console.log(json)
+      console.log(proximos)
+      proximos.forEach(prod => {
+        const list = document.createElement('li')
+        list.innerHTML = `<h3>${prod.category.name} - ${prod.title} </h3>
+      <img src=${prod.images}>`
+        ulList.append(list)
+      })
+    })
 };
